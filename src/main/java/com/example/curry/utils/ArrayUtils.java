@@ -12,7 +12,7 @@ import java.util.List;
  * @date 2021/11/26 12:31
  */
 @Slf4j
-public class SplitArray {
+public class ArrayUtils {
 
     /**
      * 拆分集合
