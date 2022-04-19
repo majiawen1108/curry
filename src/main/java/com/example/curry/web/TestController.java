@@ -1,5 +1,6 @@
 package com.example.curry.web;
 
+import com.example.curry.model.PageListResult;
 import com.example.curry.model.TestUser;
 import com.example.curry.service.TestService;
 import com.example.curry.utils.RequestParms;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -39,5 +41,17 @@ public class TestController {
     @RequestMapping(value = "/queryUserListByPage",method = RequestMethod.POST)
     public PageInfo<TestUser> queryUserListByPage(@RequestBody(required = false) RequestParms<TestUser> testUser){
         return testService.queryUserListByPage(testUser);
+    }
+
+    @RequestMapping(value = "/queryUserListWithPage",method = RequestMethod.POST)
+    public PageListResult queryUserListWithPage(@RequestBody(required = false) RequestParms<TestUser> requestParms){
+        List<TestUser> testUsers = testService.queryUserListWithPage(requestParms);
+        return new PageListResult<>(testUsers);
+    }
+
+    @RequestMapping(value = "/queryUserList1WithPage",method = RequestMethod.POST)
+    public PageInfo<TestUser> queryUserList1WithPage(@RequestBody(required = false) RequestParms<TestUser> requestParms){
+        List<TestUser> testUsers = testService.queryUserListWithPage(requestParms);
+        return new PageInfo<>(testUsers);
     }
 }

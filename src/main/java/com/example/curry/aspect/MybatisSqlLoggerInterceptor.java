@@ -1,4 +1,4 @@
-package com.example.curry;
+package com.example.curry.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.statement.StatementHandler;

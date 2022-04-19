@@ -1,5 +1,6 @@
 package com.example.curry.service;
 
+import com.example.curry.model.PageListResult;
 import com.example.curry.model.TestUser;
 import com.example.curry.utils.RequestParms;
 import com.github.pagehelper.PageInfo;
@@ -19,4 +20,6 @@ public interface TestService {
     TestUser queryUserById(String id);
 
     PageInfo<TestUser> queryUserListByPage(RequestParms<TestUser> testUserRequestParms);
+
+    List<TestUser> queryUserListWithPage(RequestParms<TestUser> testUserRequestParms);
 }

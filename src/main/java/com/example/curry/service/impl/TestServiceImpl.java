@@ -1,6 +1,7 @@
 package com.example.curry.service.impl;
 
 import com.example.curry.mapper.TestMapper;
+import com.example.curry.model.PageListResult;
 import com.example.curry.model.TestUser;
 import com.example.curry.service.TestService;
 import com.example.curry.utils.RequestParms;
@@ -39,5 +40,10 @@ public class TestServiceImpl implements TestService {
         List<TestUser> testUsers = testMapper.queryUserList(testUserRequestParms.getData());
         PageInfo<TestUser> listPageInfo = new PageInfo<>(testUsers);
         return listPageInfo;
+    }
+
+    @Override
+    public List<TestUser> queryUserListWithPage(RequestParms<TestUser> testUserRequestParms) {
+         return testMapper.queryUserList(testUserRequestParms.getData());
     }
 }
