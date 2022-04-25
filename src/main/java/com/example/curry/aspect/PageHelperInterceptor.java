@@ -1,6 +1,5 @@
 package com.example.curry.aspect;
 
-import com.example.curry.model.PageListResult;
 import com.example.curry.utils.RequestParms;
 import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.javassist.*;

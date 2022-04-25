@@ -19,8 +19,8 @@ public class ArrayUtils {
      *
      * @param lists 被拆分数组
      * @param splitSize 拆分份数
-     * @param <T> 新的数组集合
-     * @return
+     * @param <T> 数组中参数类型
+     * @return 新的数组集合
      */
     private static  <T> List<List<T>> spliceArrays(List<T> lists, int splitSize) {
         if (lists == null || splitSize < 1) {
@@ -35,5 +35,42 @@ public class ArrayUtils {
             log.info("数组"+i+"为：" + cols.toString());
         }
         return rows;
+    }
+
+    /**
+     * 拆分LIST集合
+     *
+     * @param resList 被拆分数组
+     * @param count 按照多少数据一组进行拆分
+     * @param <T> 泛型
+     * @return 新的数组集合
+     */
+    public static <T> List<List<T>> split(List<T> resList, int count) {
+        if (resList == null || count < 1) {
+            return null;
+        }
+        List<List<T>> ret = new ArrayList<List<T>>();
+        int size = resList.size();
+        if (size <= count) {
+            ret.add(resList);
+        } else {
+            int pre = size / count;
+            int last = size % count;
+            for (int i = 0; i < pre; i++) {
+                List<T> itemList = new ArrayList<T>();
+                for (int j = 0; j < count; j++) {
+                    itemList.add(resList.get(i * count + j));
+                }
+                ret.add(itemList);
+            }
+            if (last > 0) {
+                List<T> itemList = new ArrayList<T>();
+                for (int i = 0; i < last; i++) {
+                    itemList.add(resList.get(pre * count + i));
+                }
+                ret.add(itemList);
+            }
+        }
+        return ret;
     }
 }

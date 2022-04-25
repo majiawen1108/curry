@@ -1,7 +1,6 @@
 package com.example.curry.service.impl;
 
 import com.example.curry.mapper.TestMapper;
-import com.example.curry.model.PageListResult;
 import com.example.curry.model.TestUser;
 import com.example.curry.service.TestService;
 import com.example.curry.utils.RequestParms;
@@ -45,5 +44,19 @@ public class TestServiceImpl implements TestService {
     @Override
     public List<TestUser> queryUserListWithPage(RequestParms<TestUser> testUserRequestParms) {
          return testMapper.queryUserList(testUserRequestParms.getData());
+    }
+
+    /**
+     * 测试 @Data 和 @Builder 共存问题
+     * @param args
+     */
+    public static void main(String[] args) {
+        TestUser build = TestUser.builder().username("userName").address("address").id("123").phoneNumber("132-1231-1321").build();
+        System.out.println(build);
+        TestUser testUser = new TestUser();
+        testUser.setUsername("userName1");
+        testUser.setAddress("address1");
+        testUser.setPhoneNumber("123");
+        System.out.println(testUser);
     }
 }
