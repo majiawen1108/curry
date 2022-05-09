@@ -54,4 +54,9 @@ public class TestController {
         List<TestUser> testUsers = testService.queryUserListWithPage(requestParms);
         return new PageInfo<>(testUsers);
     }
+
+    @RequestMapping(value = "/testFiFo",method = RequestMethod.POST)
+    public void testFiFo(HttpServletRequest request){
+        testService.testFiFo1();
+    }
 }

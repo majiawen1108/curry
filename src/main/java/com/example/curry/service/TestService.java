@@ -22,4 +22,7 @@ public interface TestService {
     PageInfo<TestUser> queryUserListByPage(RequestParms<TestUser> testUserRequestParms);
 
     List<TestUser> queryUserListWithPage(RequestParms<TestUser> testUserRequestParms);
+
+    void testFiFo1();
+
 }
