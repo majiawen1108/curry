@@ -22,11 +22,11 @@ public enum Yn implements BaseEnum<String,String> {
 
     @Override
     public String key() {
-        return null;
+        return key;
     }
 
     @Override
     public String value() {
-        return null;
+        return value;
     }
 }

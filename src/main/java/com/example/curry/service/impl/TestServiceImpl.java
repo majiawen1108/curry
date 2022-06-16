@@ -5,6 +5,7 @@ import com.example.curry.mapper.TestMapper;
 import com.example.curry.model.TestUser;
 import com.example.curry.service.TestService;
 import com.example.curry.utils.RequestParms;
+import com.example.curry.utils.SM2KeyPair;
 import com.example.curry.utils.redis.RedisUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -136,5 +137,16 @@ public class TestServiceImpl implements TestService {
 //        testUser.setAddress("address1");
 //        testUser.setPhoneNumber("123");
 //        System.out.println(testUser);
+        SM2KeyPair sm2KeyPair = SM2KeyPair.getSm2KeyPair();
+        // 后端公钥
+        String publickey = sm2KeyPair.getPublicKey();
+        // 前端公钥
+        String publicQkey = sm2KeyPair.getPublicQKey();
+        // 后端私钥
+        String privateKey = sm2KeyPair.getPrivateKey();
+        System.out.println("公钥：" + publickey);
+        System.out.println("私钥：" + privateKey);
+        System.out.println("------------------");
+        System.out.println("公钥（前端）：" + publicQkey);
     }
 }
